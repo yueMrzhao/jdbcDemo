@@ -1,0 +1,1 @@
+# We'll be using the curated Tomcat 7 container from DockerHub FROM tomcat:7

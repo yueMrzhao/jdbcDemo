@@ -1,0 +1,74 @@
+server:
+  port:8036
+name: jdbcDemo
+
+logging:
+      config: classpath:log4j.properties
+
+
+spring:
+
+    main:
+        show-banner: ture
+    output:
+          ansi:
+              enabled: ALWAYS
+
+    redis:
+        maxTotal: 512
+        maxIdle: 128
+        waitMillis: 50000
+        timeout: 60000
+        testOnBorrow: false
+        ipAddress: 127.0.0.1
+        port: 6379
+        password:
+
+    profiles:
+        #active: developer
+        #active: test
+        active: developer
+    http:
+        encoding.charset: UTF-8
+        encoding.enable: true
+        encoding.force: true
+    #data:
+        #mongodb:
+            #security:
+               # authorization: enabled
+    druid:
+           name: test
+           url: jdbc:mysql://10.10.1.155:3314/etbasedata?autoReconnect=true&failOverReadOnly=false
+           username: root
+           password: ycadmin_1001
+           # 使用druid数据源
+           #type: com.alibaba.druid.pool.DruidDataSource
+           driver-class-name: com.mysql.jdbc.Driver
+           filters: stat
+           maxActive: 20
+           initialSize: 1
+           maxWait: 60000
+           minIdle: 1
+           timeBetweenEvictionRunsMillis: 60000
+           minEvictableIdleTimeMillis: 300000
+           validationQuery: select 'x'
+           testWhileIdle: true
+           testOnBorrow: false
+           testOnReturn: false
+           poolPreparedStatements: true
+           maxOpenPreparedStatements: 20
+    jpa:
+        show-sql: true
+        #generate-ddl: true
+        #hibernate:
+              #ddl-auto: update
+        database-platform: org.hibernate.dialect.MySQL5Dialect
+
+    mybatis:
+      mapperLocations: com.zy.test/**/*.xml
+      typeAliasesPackage: com.zy.test/**/mapper
+
+    pagehelper:
+      helperDialect: mysql
+      reasonable: true
+      supportMethodsArguments: true
